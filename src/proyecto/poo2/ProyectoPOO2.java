@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package proyecto.poo2;
-
 /**
  *
  * @author rober
@@ -18,6 +17,8 @@ public class ProyectoPOO2 {
         // TODO code application logic here
         Sistema sistema = new Sistema();
         sistema.setVisible(true);
+        sistema.setLocationRelativeTo(null);
+        
     }
  
 }

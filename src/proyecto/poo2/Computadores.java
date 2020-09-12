@@ -7,8 +7,13 @@ package proyecto.poo2;
 
 /**
  *
- * @author rober
+ * @author x_jor
  */
-public class Equipo {
+public class Computadores extends Equipos{
+    
+    //contuctor de la clase
+    public void Computadores(){
+        
+    }
     
 }

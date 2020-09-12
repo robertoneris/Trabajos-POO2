@@ -16,8 +16,8 @@ public class ProyectoPOO2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Sistema Panel = new Sistema();
-        Panel.setVisible(true);
+        Sistema sistema = new Sistema();
+        sistema.setVisible(true);
     }
  
 }

@@ -4,6 +4,7 @@ package proyecto.poo2;
 import java.util.Scanner;
 
 public class Usuario {
+    
     String rut;
     String nombre;
     public String clave;
@@ -16,6 +17,10 @@ public class Usuario {
 
    
     
+    public Usuario() {
+   
+    }
+   
     Scanner sc = new Scanner(System.in);
     
     public void solicitarRegistro() {

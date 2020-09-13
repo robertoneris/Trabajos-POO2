@@ -4,16 +4,29 @@
  * and open the template in the editor.
  */
 package proyecto.poo2;
-
+  
 /**
  *
- * @author x_jor
+ * @author rober
  */
-public class Impresoras extends Equipos{
-    
-    //contructor de la clase
-    public void Impresoras(){
+public class Encargado extends Usuario{
+
+    public Encargado() {
+        super(null, null, null);
         
     }
     
-}
+    
+        
+    }
+  
+
+
+  
+   
+    
+
+    
+    
+    
+

@@ -1,5 +1,5 @@
 
-package Proyecto.poo2;
+package proyecto.poo2;
 
 import java.util.Scanner;
 
@@ -7,6 +7,14 @@ public class Usuario {
     String rut;
     String nombre;
     public String clave;
+
+    public Usuario(String rut, String nombre, String clave) {
+        this.rut = rut;
+        this.nombre = nombre;
+        this.clave = clave;
+    }
+
+   
     
     Scanner sc = new Scanner(System.in);
     
@@ -20,12 +28,8 @@ public class Usuario {
     
 }
 
-class Profesor extends Usuario {}
 
-class EncargadoL extends Usuario {}
 
-class Administrador extends Usuario {
+
     
-    private String Ramon;
-    private String ramonsito01; //Clave admin       
-}
+

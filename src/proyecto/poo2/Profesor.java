@@ -7,13 +7,14 @@ package proyecto.poo2;
 
 /**
  *
- * @author x_jor
+ * @author rober
  */
-public class Computadores extends Equipos{
-    
-    //contuctor de la clase
-    public void Computadores(){
-        
+public class Profesor extends Usuario{
+    String Nombre;
+    String clave;
+
+    public Profesor() {
+        super(null,null,null);
     }
     
 }

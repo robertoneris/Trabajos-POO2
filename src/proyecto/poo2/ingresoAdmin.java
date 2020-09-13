@@ -12,13 +12,16 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class ingresoAdmin extends javax.swing.JFrame {
-   String auser= "ramon";
-   String apass="ramon1";
+    
+   Administrador Admin = new Administrador();
+   String auser= Admin.nombre;
+   String apass= Admin.clave;
    int contador = 1;
     /**
      * Creates new form ingresoAdmin
      */
     public ingresoAdmin() {
+       
         initComponents();
         this.setLocationRelativeTo(null);
         HabilitarIngreso();
@@ -132,7 +135,7 @@ public class ingresoAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IniciarSesion)
                     .addComponent(Cancelar))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();

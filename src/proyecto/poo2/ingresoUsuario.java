@@ -12,10 +12,12 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class ingresoUsuario extends javax.swing.JFrame {
-   String auser= "ramon";
-   String apass="ramon1";
+   Profesor profe = new Profesor();
+   Encargado encar = new Encargado();
+   String auser;
+   String apass;
    boolean TipoUsuario;
-   int contador = 1;
+   int contador = 0;
     /**
      * Creates new form ingresoAdmin
      */
@@ -278,12 +280,12 @@ public void HabilitarIngreso(){
     }
 }
 public void revisarContador(){
-    if(contador < 4){
+    if(contador < 3){
       JOptionPane.showConfirmDialog(null, "usuario o contraseña incorrectos", 
             "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);  
       contador = contador+1;
     }
-    if(contador == 4){
+    if(contador == 3){
         JOptionPane.showConfirmDialog(null, "demasiadr errores, cerrando programa", 
             "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
         dispose();

@@ -16,6 +16,7 @@ public class EncargadoF extends javax.swing.JFrame {
      */
     public EncargadoF() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

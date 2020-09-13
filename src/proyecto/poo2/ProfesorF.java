@@ -16,6 +16,7 @@ public class ProfesorF extends javax.swing.JFrame {
      */
     public ProfesorF() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

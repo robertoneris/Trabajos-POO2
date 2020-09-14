@@ -36,6 +36,8 @@ public class SolicitarRegistro extends javax.swing.JFrame {
         rutUsuario = new javax.swing.JTextField();
         envio = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        tipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +61,14 @@ public class SolicitarRegistro extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Encargado  o Profesor");
+
+        tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,15 +82,17 @@ public class SolicitarRegistro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(rutUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                    .addComponent(nombreUsuario))))
+                                    .addComponent(nombreUsuario)
+                                    .addComponent(tipo))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(envio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))))
         );
@@ -97,7 +109,11 @@ public class SolicitarRegistro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(rutUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(envio)
                     .addComponent(jButton1))
@@ -110,14 +126,17 @@ public class SolicitarRegistro extends javax.swing.JFrame {
     private void envioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_envioActionPerformed
         String usuario = nombreUsuario.getText();
         String rut = rutUsuario.getText();
+        String cargo = tipo.getText();
         
         if(usuario.isEmpty() || rut.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos");
             
         } else {
+            guardar();
             JOptionPane.showMessageDialog(null, "Sus datos han sido enviados");
             nombreUsuario.setText(null);
             rutUsuario.setText(null);
+            tipo.setText(null);
         }
     }//GEN-LAST:event_envioActionPerformed
 
@@ -126,6 +145,10 @@ public class SolicitarRegistro extends javax.swing.JFrame {
         dispose();
         new Sistema().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +191,12 @@ public class SolicitarRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nombreUsuario;
     private javax.swing.JTextField rutUsuario;
+    private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
+public void guardar(){
+    
+}
 }

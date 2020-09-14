@@ -12,7 +12,7 @@ package proyecto.poo2;
 public class Encargado extends Usuario{
     
     public Encargado() {
-        super(null, null, null);
+        super(null, "a", "a");
         
     }
     

@@ -10,7 +10,7 @@ package proyecto.poo2;
  * @author rober
  */
 public class ProfesorF extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ProfesorF
      */

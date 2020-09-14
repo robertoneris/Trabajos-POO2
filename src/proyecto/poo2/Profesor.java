@@ -12,7 +12,7 @@ package proyecto.poo2;
 public class Profesor extends Usuario{
 
     public Profesor() {
-        super(null,null,null);
+        super(null,"a","a");
     }
     
 }

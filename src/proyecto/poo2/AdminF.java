@@ -193,6 +193,7 @@ public class AdminF extends javax.swing.JFrame {
             
         } else {
             CrearUsuario();
+            guardar();
             JOptionPane.showMessageDialog(null, "Se han enviado todos los datos");
             nombreUsuario.setText(null);
             rutUsuario.setText(null);
@@ -266,6 +267,14 @@ public class AdminF extends javax.swing.JFrame {
     private javax.swing.JTextField rutUsuario;
     // End of variables declaration//GEN-END:variables
 public void CrearUsuario(){
+    if(esprofe = true){
+      
+    }
+    if(esprofe = false){
+        
+    }
+}
+public void guardar(){
     if(esprofe = true){
       
     }

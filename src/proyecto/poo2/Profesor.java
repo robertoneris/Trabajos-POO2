@@ -10,8 +10,6 @@ package proyecto.poo2;
  * @author rober
  */
 public class Profesor extends Usuario{
-    String Nombre;
-    String clave;
 
     public Profesor() {
         super(null,null,null);

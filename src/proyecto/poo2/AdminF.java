@@ -12,13 +12,14 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class AdminF extends javax.swing.JFrame {
-
+    boolean esprofe;
     /**
      * Creates new form AdminF
      */
     public AdminF() {
         initComponents();
         this.setLocationRelativeTo(null);
+       
     }
 
     /**
@@ -30,6 +31,7 @@ public class AdminF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         nombreUsuario = new javax.swing.JTextField();
         rutUsuario = new javax.swing.JTextField();
         claveUsuario = new javax.swing.JTextField();
@@ -38,6 +40,9 @@ public class AdminF extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        esprofesor = new javax.swing.JRadioButton();
+        esencargado = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +64,7 @@ public class AdminF extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Ingrese nuevo usuario");
 
         Crear.setText("Enviar");
@@ -74,6 +80,30 @@ public class AdminF extends javax.swing.JFrame {
 
         jLabel4.setText("Clave:");
 
+        jButton1.setText("cerrar sesion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(esprofesor);
+        esprofesor.setSelected(true);
+        esprofesor.setText("profesor");
+        esprofesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esprofesorActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(esencargado);
+        esencargado.setText("encargado");
+        esencargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esencargadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,21 +112,32 @@ public class AdminF extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(rutUsuario)
-                            .addComponent(claveUsuario))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1)
+                        .addGap(0, 31, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addComponent(esprofesor)))
+                                .addGap(65, 65, 65)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(esencargado))
+                                    .addComponent(nombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                    .addComponent(rutUsuario)
+                                    .addComponent(claveUsuario))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,8 +156,14 @@ public class AdminF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(claveUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(56, 56, 56)
-                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(esprofesor)
+                    .addComponent(esencargado))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -145,12 +192,29 @@ public class AdminF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos");
             
         } else {
+            CrearUsuario();
             JOptionPane.showMessageDialog(null, "Se han enviado todos los datos");
             nombreUsuario.setText(null);
             rutUsuario.setText(null);
             claveUsuario.setText(null);
         }
     }//GEN-LAST:event_CrearActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+         new Sistema().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void esprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esprofesorActionPerformed
+        // TODO add your handling code here:
+        esprofe = true;
+    }//GEN-LAST:event_esprofesorActionPerformed
+
+    private void esencargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esencargadoActionPerformed
+        // TODO add your handling code here:
+        esprofe = false;
+    }//GEN-LAST:event_esencargadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +253,11 @@ public class AdminF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Crear;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField claveUsuario;
+    private javax.swing.JRadioButton esencargado;
+    private javax.swing.JRadioButton esprofesor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -197,4 +265,12 @@ public class AdminF extends javax.swing.JFrame {
     private javax.swing.JTextField nombreUsuario;
     private javax.swing.JTextField rutUsuario;
     // End of variables declaration//GEN-END:variables
+public void CrearUsuario(){
+    if(esprofe = true){
+      
+    }
+    if(esprofe = false){
+        
+    }
+}
 }

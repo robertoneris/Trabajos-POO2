@@ -188,7 +188,7 @@ public class ingresoUsuario extends javax.swing.JFrame {
         String Pass = APass.getText();
         if(TipoUsuario == true){
             apass = profe.clave;
-            auser = profe.Nombre;
+            auser = profe.nombre;
             if(auser.equals(User) && apass.equals(Pass) ){
               dispose();
               new ProfesorF().setVisible(true);

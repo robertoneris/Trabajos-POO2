@@ -97,6 +97,11 @@ public class ingresoUsuario extends javax.swing.JFrame {
         buttonGroup1.add(Encargado);
         Encargado.setSelected(true);
         Encargado.setText("Encargado");
+        Encargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EncargadoActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(profesor);
         profesor.setText("Profesor");
@@ -181,21 +186,31 @@ public class ingresoUsuario extends javax.swing.JFrame {
         
         String User = AUser.getText();
         String Pass = APass.getText();
-        if(auser.equals(User) && apass.equals(Pass) ){
-          if(TipoUsuario == true){
+        if(TipoUsuario == true){
+            apass = profe.clave;
+            auser = profe.nombre;
+            if(auser.equals(User) && apass.equals(Pass) ){
               dispose();
               new ProfesorF().setVisible(true);
           
           }
-           if(TipoUsuario == false){
+            else{
+                revisarContador();
+        }
+        }
+        if(TipoUsuario == false){
+            apass = encar.clave;
+            auser = encar.nombre;
+            if(auser.equals(User) && apass.equals(Pass) ){
                dispose();
                new EncargadoF().setVisible(true);
-           } 
+           }
+            else{
+            revisarContador();
+        }
         }
        
-        else{
-          revisarContador();
-        }
+        
     }//GEN-LAST:event_IniciarSesionActionPerformed
 
     private void AUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AUserKeyTyped
@@ -222,6 +237,11 @@ public class ingresoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         TipoUsuario = true;
     }//GEN-LAST:event_profesorActionPerformed
+
+    private void EncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EncargadoActionPerformed
+        // TODO add your handling code here:
+        TipoUsuario = false;
+    }//GEN-LAST:event_EncargadoActionPerformed
 
     /**
      * @param args the command line arguments

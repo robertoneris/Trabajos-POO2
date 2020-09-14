@@ -99,6 +99,8 @@ public class Sistema extends javax.swing.JFrame {
 
     private void SolicitarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarRegistroActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new SolicitarRegistro().setVisible(true);
     }//GEN-LAST:event_SolicitarRegistroActionPerformed
 
     private void ingresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresaActionPerformed

@@ -10,7 +10,7 @@ package proyecto.poo2;
  * @author rober
  */
 public class Encargado extends Usuario{
-
+    
     public Encargado() {
         super(null, null, null);
         

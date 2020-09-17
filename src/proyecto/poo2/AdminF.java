@@ -19,7 +19,10 @@ public class AdminF extends javax.swing.JFrame {
     public AdminF() {
         initComponents();
         this.setLocationRelativeTo(null);
-       
+        Profesor Profesores[] = new Profesor[1000];
+        Encargado Encargados[] = new Encargado[1000];
+        int contador = 0;
+        cargar();
     }
 
     /**
@@ -281,5 +284,8 @@ public void guardar(){
     if(esprofe = false){
         
     }
+}
+public void cargar(){
+    
 }
 }

@@ -12,21 +12,36 @@ package proyecto.poo2;
 public class Encargado extends Usuario{
     
     public Encargado() {
-        super(null, "a", "a");
+        super("Default","AdminEntry1","AdminPass");
         
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
     
     
         
     }
   
-
-
-  
-   
-    
-
-    
-    
-    
 

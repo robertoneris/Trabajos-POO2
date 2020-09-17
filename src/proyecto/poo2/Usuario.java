@@ -5,9 +5,33 @@ import java.util.Scanner;
 
 public class Usuario {
     
-    String rut;
-    String nombre;
-    public String clave;
+    private String rut;
+    private String nombre;
+
+    public String getRut() {
+        return rut;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+    private String clave;
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
     public Usuario(String rut, String nombre, String clave) {
         this.rut = rut;
@@ -16,20 +40,8 @@ public class Usuario {
     }
 
    
-    
-    public Usuario() {
+
    
-    }
-   
-    Scanner sc = new Scanner(System.in);
-    
-    public void solicitarRegistro() {
-        System.out.println("Ingrese nombre: ");
-        nombre = sc.nextLine();
-        
-        System.out.println("Ingrese su rut: ");
-        rut = sc.nextLine();
-    }
     
 }
 

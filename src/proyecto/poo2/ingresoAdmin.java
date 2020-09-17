@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 public class ingresoAdmin extends javax.swing.JFrame {
     
    Administrador Admin = new Administrador();
-   String auser= Admin.nombre;
-   String apass= Admin.clave;
+   String auser= Admin.getNombre();
+   String apass= Admin.getClave();
    int contador = 1;
     /**
      * Creates new form ingresoAdmin

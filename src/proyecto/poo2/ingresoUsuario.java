@@ -187,8 +187,8 @@ public class ingresoUsuario extends javax.swing.JFrame {
         String User = AUser.getText();
         String Pass = APass.getText();
         if(TipoUsuario == true){
-            apass = profe.clave;
-            auser = profe.nombre;
+            apass = profe.getClave();
+            auser = profe.getNombre();
             if(auser.equals(User) && apass.equals(Pass) ){
               dispose();
               new ProfesorF().setVisible(true);
@@ -199,8 +199,8 @@ public class ingresoUsuario extends javax.swing.JFrame {
         }
         }
         if(TipoUsuario == false){
-            apass = encar.clave;
-            auser = encar.nombre;
+            apass = encar.getClave();
+            auser = encar.getNombre();
             if(auser.equals(User) && apass.equals(Pass) ){
                dispose();
                new EncargadoF().setVisible(true);
@@ -314,5 +314,6 @@ public void revisarContador(){
         
     }
 }
+
 }
 

@@ -11,56 +11,82 @@ package proyecto.poo2;
  */
 public class Equipos extends Sede {
     
-    private int AñoFabricacion;
-    private int N_serie;
+    private String N_serie;
+    private String Nombre;
     private String Marca;
-    private boolean EstadoOperatividad; 
+    private String AñoFabricacion;
+    private String Laboratorio;
+    private String Sede;
+    private String EstadoOperatividad; 
     
     //contructor de la clase
-    public void Equipo(){
-        
+
+    public Equipos(String N_serie, String Nombre, String Marca, String AñoFabricacion, String Laboratorio, String Sede, String EstadoOperatividad) {
+        this.N_serie = N_serie;
+        this.Nombre = Nombre;
+        this.Marca = Marca;
+        this.AñoFabricacion = AñoFabricacion;
+        this.Laboratorio = Laboratorio;
+        this.Sede = Sede;
+        this.EstadoOperatividad = EstadoOperatividad;
+    }
+
+    public String getN_serie() {
+        return N_serie;
+    }
+
+    public void setN_serie(String N_serie) {
+        this.N_serie = N_serie;
     }
     
-    //Los siguientes metodos son para obtener las caract. del Equipo correspondiente
-    
-    public void getAñoFabricacion(){
-        
-    }
-    public void getN_sede(){
-        
-    }
-    public void getMarca(){
-        
-    } 
-    public void getEstadoOperatividad(){
-        
+    public String getNombre(){
+        return Nombre;
     }
     
-    //Los siguientes metodos son para darles valor a las caract. del equipo correspondiente
+    public void setNombre(String Nombre){
+        this.Nombre =Nombre;
+    }
     
-    public void setAñoFabricacion(){
-        
+    public String getMarca() {
+        return Marca;
     }
-    public void setN_sede(){
-        
+
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
     }
-    public void setMarca(){
-        
+
+    public String getAñoFabricacion() {
+        return AñoFabricacion;
     }
-    public void setEstadoOperatividad(){
-        
+
+    public void setAñoFabricacion(String AñoFabricacion) {
+        this.AñoFabricacion = AñoFabricacion;
     }
-            
-    //Los siguientes metodos o funciones son para manejar los equipos de forma general
+
+    public String getLaboratorio() {
+        return Laboratorio;
+    }
+
+    public void setLaboratorio(String Laboratorio) {
+        this.Laboratorio = Laboratorio;
+    }
+
+    public String getSede() {
+        return Sede;
+    }
+
+    public void setSede(String Sede) {
+        this.Sede = Sede;
+    }
+
+    public String getEstadoOperatividad() {
+        return EstadoOperatividad;
+    }
+
+    public void setEstadoOperatividad(String EstadoOperatividad) {
+        this.EstadoOperatividad = EstadoOperatividad;
+    }
+
     
-    public void CambiarAF(int N_serie){
-        
-    }
-    public void Marca(int N_serie){
-        
-    }
-    public void Estado(int N_serie){
-        
-    }
     
 }

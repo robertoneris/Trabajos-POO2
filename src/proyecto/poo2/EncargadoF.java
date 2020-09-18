@@ -5,20 +5,24 @@
  */
 package proyecto.poo2;
 
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import static proyecto.poo2.AdminF.contenedor;
 
 /**
  *
  * @author rober
  */
 public class EncargadoF extends javax.swing.JFrame {
-
+    public static LinkedList contenedor = new LinkedList();
+    public int buscar;
     /**
      * Creates new form EncargadoF
      */
     public EncargadoF() {
         initComponents();
         this.setLocationRelativeTo(null);
+        int contador = 0;
     }
 
     /**
@@ -33,9 +37,8 @@ public class EncargadoF extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         nombreEquipo = new javax.swing.JTextField();
-        numSerie = new javax.swing.JTextField();
         Agregar = new javax.swing.JButton();
-        Buscar = new javax.swing.JButton();
+        Modificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -46,6 +49,25 @@ public class EncargadoF extends javax.swing.JFrame {
         Fabricacion = new javax.swing.JTextField();
         numSerieEquipo = new javax.swing.JTextField();
         numLab = new javax.swing.JTextField();
+        MostrarTabla = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        numeroSede = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        Operatividad = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        laboratorio = new javax.swing.JTextField();
+        sede = new javax.swing.JTextField();
+        operatividad = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        numSerie1 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        marca = new javax.swing.JTextField();
+        año = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +88,10 @@ public class EncargadoF extends javax.swing.JFrame {
             }
         });
 
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                ModificarActionPerformed(evt);
             }
         });
 
@@ -85,6 +107,54 @@ public class EncargadoF extends javax.swing.JFrame {
 
         jLabel8.setText("N° de Laboratorio");
 
+        MostrarTabla.setText("Mostrar Tabla");
+        MostrarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarTablaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Sede");
+
+        jLabel10.setText("Operatividad");
+
+        jLabel11.setText("Año");
+
+        operatividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                operatividadActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Laboratorio");
+
+        jLabel13.setText("Sede");
+
+        numSerie1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                numSerie1KeyTyped(evt);
+            }
+        });
+
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Operatividad");
+
+        jLabel15.setText("Nombre");
+
+        jLabel16.setText("Marca");
+
+        jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,39 +163,92 @@ public class EncargadoF extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(73, 73, 73)
+                                                .addComponent(jLabel15)
+                                                .addGap(74, 74, 74)
+                                                .addComponent(jLabel16)
+                                                .addGap(64, 64, 64)
+                                                .addComponent(jLabel11)
+                                                .addGap(45, 45, 45))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(numSerie1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(296, 296, 296)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jLabel13)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(jLabel14))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(operatividad, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(45, 45, 45)))))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Agregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MostrarTabla)
+                        .addGap(131, 131, 131))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel4)
-                            .addComponent(Agregar)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel10))
                                 .addGap(66, 66, 66)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(nombreEquipo)
-                                        .addComponent(marcaEquipo)
-                                        .addComponent(Fabricacion)
-                                        .addComponent(numSerieEquipo)
-                                        .addComponent(numLab, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))))
-                        .addGap(0, 119, Short.MAX_VALUE))))
+                                    .addComponent(numSerieEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Operatividad, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(numeroSede, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nombreEquipo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(marcaEquipo, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Fabricacion, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(numLab, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(numSerieEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -140,63 +263,149 @@ public class EncargadoF extends javax.swing.JFrame {
                     .addComponent(Fabricacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(numSerieEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(numLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(numeroSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(Operatividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addComponent(Agregar)
-                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Agregar)
+                    .addComponent(MostrarTabla))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar))
-                .addGap(107, 107, 107))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numSerie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(operatividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Modificar)
+                    .addComponent(jButton1))
+                .addGap(90, 90, 90))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        String numS = numSerieEquipo.getText();
         String nomE = nombreEquipo.getText();  
         String marE = marcaEquipo.getText(); 
-        String af = Fabricacion.getText(); 
-        String numS = numSerieEquipo.getText(); 
-        String numL = numLab.getText(); 
+        String af = Fabricacion.getText();
+        String numL = numLab.getText();
+        String Sede = numeroSede.getText();
+        String operatividad = Operatividad.getText();
         
-        if(nomE.isEmpty() || marE.isEmpty() || af.isEmpty() || numS.isEmpty() || numL.isEmpty()) {
+        Equipos claseequipos = new Equipos(numS,nomE,marE,af,numL,Sede,operatividad);
+        contenedor.add(claseequipos);
+        
+        
+        if(numS.isEmpty() || nomE.isEmpty() || marE.isEmpty() || af.isEmpty() || numL.isEmpty() || Sede.isEmpty() || operatividad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos");
             
         } else {
             JOptionPane.showMessageDialog(null, "Nuevo equipo agregado");
+            numSerieEquipo.setText(null);
             nombreEquipo.setText(null);
             marcaEquipo.setText(null);
             Fabricacion.setText(null);
-            numSerieEquipo.setText(null);
             numLab.setText(null);
+            numeroSede.setText(null);
+            Operatividad.setText(null);
         }
         
     }//GEN-LAST:event_AgregarActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        String nSerie = numSerie.getText();
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        String numS = numSerie1.getText();
+        String nomE = nombre.getText();  
+        String marE = marca.getText(); 
+        String af = año.getText();
+        String numL = laboratorio.getText();
+        String Sede = sede.getText();
+        String opE = operatividad.getText();
         
-        if(nSerie.isEmpty()) {
+        if(numS.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingreso el numero de serie del equipo");
             
         } else {
-            JOptionPane.showMessageDialog(null, "Buscando equipo...");
-            numSerie.setText(null);
+            Equipos a = new Equipos(numS,nomE,marE,af,numL,Sede,opE);
+            contenedor.set(buscar,a);
+            
+            numSerie1.setText(null);
+            nombre.setText(null);
+            marca.setText(null);
+            año.setText(null);
+            laboratorio.setText(null);
+            sede.setText(null);
+            operatividad.setText(null);
         }
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_ModificarActionPerformed
 
     private void nombreEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreEquipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreEquipoActionPerformed
+
+    private void MostrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTablaActionPerformed
+        // TODO add your handling code here:
+        DatosInventario mostrar = new DatosInventario();
+        mostrar.setVisible(true);
+    }//GEN-LAST:event_MostrarTablaActionPerformed
+
+    private void operatividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operatividadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_operatividadActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void numSerie1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numSerie1KeyTyped
+        // TODO add your handling code here:
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idencontrado=numSerie1.getText().trim();
+            Equipos a;
+            for (int i=0; i<contenedor.size(); i++){
+                a = (Equipos)contenedor.get(i);
+                if(idencontrado.equalsIgnoreCase(a.getN_serie())){
+                    nombre.setText(a.getNombre());
+                    marca.setText(a.getMarca());
+                    año.setText(a.getAñoFabricacion());
+                    laboratorio.setText(a.getLaboratorio());
+                    sede.setText(a.getSede());
+                    operatividad.setText(a.getEstadoOperatividad());
+                    buscar=1;
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_numSerie1KeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,9 +444,20 @@ public class EncargadoF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
-    private javax.swing.JButton Buscar;
     private javax.swing.JTextField Fabricacion;
+    private javax.swing.JButton Modificar;
+    private javax.swing.JButton MostrarTabla;
+    private javax.swing.JTextField Operatividad;
+    private javax.swing.JTextField año;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -245,10 +465,21 @@ public class EncargadoF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField laboratorio;
+    private javax.swing.JTextField marca;
     private javax.swing.JTextField marcaEquipo;
+    private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombreEquipo;
     private javax.swing.JTextField numLab;
-    private javax.swing.JTextField numSerie;
+    private javax.swing.JTextField numSerie1;
     private javax.swing.JTextField numSerieEquipo;
+    private javax.swing.JTextField numeroSede;
+    private javax.swing.JTextField operatividad;
+    private javax.swing.JTextField sede;
     // End of variables declaration//GEN-END:variables
+
+public void cargar(){
+    
+}
 }

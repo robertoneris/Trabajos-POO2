@@ -9,36 +9,42 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author paezj
+ * @author x_jor
  */
-public class Datos extends javax.swing.JFrame {
+public class DatosInventario extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     int contador = 0;
+
     /**
-     * Creates new form Datos
+     * Creates new form DatosInventario
      */
-    public Datos() {
+    public DatosInventario() {
         initComponents();
         cargarInterfaz();
         cargarDatos();
+        
     }
     
     public void cargarInterfaz() {
         String datos[][] = {};
-        String columna[] = {"RUT", "NOMBRE", "CLAVE"};
+        String columna[] = {"N°Serie", "Nombre", "Marca", "AñoFabricacion","Laboratorio","Sede","Operatividad"};
         modelo = new DefaultTableModel(datos, columna);
-        tabladatos.setModel(modelo);
+        TablaInventario.setModel(modelo);
     }
     
     public void cargarDatos() {
-        Usuario u;
+        Equipos u;
         
-        for(int i = 0; i < AdminF.contenedor.size(); i++) {
-            u = (Usuario)AdminF.contenedor.get(i);
+        for(int i = 0; i < EncargadoF.contenedor.size(); i++) {
+            u = (Equipos)EncargadoF.contenedor.get(i);
             modelo.insertRow(contador, new Object[]{});
-            modelo.setValueAt(u.getRut(), contador, 0);
+            modelo.setValueAt(u.getN_serie(), contador, 0);
             modelo.setValueAt(u.getNombre(), contador, 1);
-            modelo.setValueAt(u.getClave(), contador, 2);
+            modelo.setValueAt(u.getMarca(), contador, 2);
+            modelo.setValueAt(u.getAñoFabricacion(), contador, 3);
+            modelo.setValueAt(u.getLaboratorio(), contador, 4);
+            modelo.setValueAt(u.getSede(), contador, 5);
+            modelo.setValueAt(u.getEstadoOperatividad(), contador, 6);
         }
     }
 
@@ -53,14 +59,14 @@ public class Datos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabladatos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        TablaInventario = new javax.swing.JTable();
+        BotonCerrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Datos de Usuario");
+        jLabel1.setText("DATOS INVENTARIO");
 
-        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,12 +74,12 @@ public class Datos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabladatos);
+        jScrollPane1.setViewportView(TablaInventario);
 
-        jButton1.setText("cerrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonCerrar.setText("cerrar");
+        BotonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonCerrarActionPerformed(evt);
             }
         });
 
@@ -84,37 +90,38 @@ public class Datos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonCerrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(16, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(46, 46, 46))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonCerrar)
+                        .addGap(59, 59, 59))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,28 +140,28 @@ public class Datos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Datos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Datos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Datos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Datos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Datos().setVisible(true);
+                new DatosInventario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BotonCerrar;
+    private javax.swing.JTable TablaInventario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 }

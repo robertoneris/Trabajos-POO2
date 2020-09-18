@@ -18,12 +18,12 @@ public class Sede {
     }
     
     //Metodo para obtener el N° de Sede
-    public void getSede(){
+    public void getN_Sede(){
         
     }
     
     //Metodo para Dar el N° de la Serde 
-    public void setSede(){
+    public void setN_Sede(){
         
     }
     

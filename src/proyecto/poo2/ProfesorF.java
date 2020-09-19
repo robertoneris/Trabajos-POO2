@@ -7,7 +7,7 @@ package proyecto.poo2;
 
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import static proyecto.poo2.EncargadoF.contenedor;
+import static proyecto.poo2.EncargadoF.contenedorEquipos;
 
 /**
  *
@@ -243,7 +243,7 @@ public class ProfesorF extends javax.swing.JFrame {
         String OpE =operatividad.getText();
         
         Equipos claseequipos = new Equipos(numS,nomE,marE,añoE,labE,sedeE,OpE);
-        contenedor.add(claseequipos);
+        contenedorEquipos.add(claseequipos);
         
         if(numS.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese numero de serie del equipo a modificar");

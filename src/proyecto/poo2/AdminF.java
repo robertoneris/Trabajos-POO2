@@ -5,6 +5,8 @@
  */
 package proyecto.poo2;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -14,16 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class AdminF extends javax.swing.JFrame {
     boolean esprofe;
-    public static LinkedList contenedor = new LinkedList();
+    public static LinkedList contenedorProf = new LinkedList();
+    public static LinkedList contenedorEnca = new LinkedList();
     /**
      * Creates new form AdminF
      */
     public AdminF() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Profesor Profesores[] = new Profesor[1000];
-        Encargado Encargados[] = new Encargado[1000];
         int contador = 0;
+ 
         cargar();
     }
 
@@ -207,14 +209,13 @@ public class AdminF extends javax.swing.JFrame {
         String rut = nombreUsuario.getText();
         String clave = claveUsuario.getText();
         
-        Usuario claseusuario = new Usuario(nombre, rut, clave);
-        contenedor.add(claseusuario);
+       
         
         if(nombre.isEmpty() || rut.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos");
             
         } else {
-            CrearUsuario();
+            CrearUsuario(rut,nombre,clave);
             guardar();
             JOptionPane.showMessageDialog(null, "Se han enviado todos los datos");
             rutUsuario.setText(null);
@@ -232,6 +233,7 @@ public class AdminF extends javax.swing.JFrame {
     private void esprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esprofesorActionPerformed
         // TODO add your handling code here:
         esprofe = true;
+      
     }//GEN-LAST:event_esprofesorActionPerformed
 
     private void esencargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esencargadoActionPerformed
@@ -294,21 +296,48 @@ public class AdminF extends javax.swing.JFrame {
     private javax.swing.JTextField nombreUsuario;
     private javax.swing.JTextField rutUsuario;
     // End of variables declaration//GEN-END:variables
-public void CrearUsuario(){
+public void CrearUsuario(String Rut,String Usuario, String Clave){
     if(esprofe = true){
-      
+      Profesor NuevoProf = new Profesor();
+      NuevoProf.setRut(Rut);
+      NuevoProf.setNombre(Usuario);
+      NuevoProf.setClave(Clave);
+      contenedorProf.add(NuevoProf);
     }
     if(esprofe = false){
-        
+      Encargado NuevoEnca = new Encargado();
+      NuevoEnca.setRut(Rut);
+      NuevoEnca.setNombre(Usuario);
+      NuevoEnca.setClave(Clave);
+      contenedorEnca.add(NuevoEnca);    
     }
 }
 public void guardar(){
-    if(esprofe = true){
-      
-    }
-    if(esprofe = false){
+      Usuario u;
         
-    }
+        for(int i = 0; i < AdminF.contenedorProf.size(); i++) {
+        u = (Usuario)AdminF.contenedorProf.get(i);
+        String c1 = u.getRut();
+        String c2 = u.getNombre();
+        String c3 = u.getClave();
+        String CadenaDatos = "";
+        CadenaDatos = c1+","+c2 +","+c3;
+        //guardaod de datos
+        FileWriter fichero;
+        PrintWriter pw; 
+        try{
+            fichero = new FileWriter("UserProf.txt",false);
+            pw = new PrintWriter(fichero);
+            pw.print(CadenaDatos);
+
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+        }
+
 }
 public void cargar(){
     

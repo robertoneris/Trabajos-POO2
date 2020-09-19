@@ -7,14 +7,14 @@ package proyecto.poo2;
 
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
-import static proyecto.poo2.AdminF.contenedor;
+import static proyecto.poo2.AdminF.contenedorProf;
 
 /**
  *
  * @author rober
  */
 public class EncargadoF extends javax.swing.JFrame {
-    public static LinkedList contenedor = new LinkedList();
+    public static LinkedList contenedorEquipos = new LinkedList();
     public int buscar;
     /**
      * Creates new form EncargadoF
@@ -317,7 +317,7 @@ public class EncargadoF extends javax.swing.JFrame {
         String operatividad = Operatividad.getText();
         
         Equipos claseequipos = new Equipos(numS,nomE,marE,af,numL,Sede,operatividad);
-        contenedor.add(claseequipos);
+        contenedorEquipos.add(claseequipos);
         
         
         if(numS.isEmpty() || nomE.isEmpty() || marE.isEmpty() || af.isEmpty() || numL.isEmpty() || Sede.isEmpty() || operatividad.isEmpty()) {
@@ -350,7 +350,7 @@ public class EncargadoF extends javax.swing.JFrame {
             
         } else {
             Equipos a = new Equipos(numS,nomE,marE,af,numL,Sede,opE);
-            contenedor.set(buscar,a);
+            contenedorEquipos.set(buscar,a);
             
             numSerie1.setText(null);
             nombre.setText(null);
@@ -386,8 +386,8 @@ public class EncargadoF extends javax.swing.JFrame {
         if(press==10){
             String idencontrado=numSerie1.getText().trim();
             Equipos a;
-            for (int i=0; i<contenedor.size(); i++){
-                a = (Equipos)contenedor.get(i);
+            for (int i=0; i<contenedorEquipos.size(); i++){
+                a = (Equipos)contenedorEquipos.get(i);
                 if(idencontrado.equalsIgnoreCase(a.getN_serie())){
                     nombre.setText(a.getNombre());
                     marca.setText(a.getMarca());

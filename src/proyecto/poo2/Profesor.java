@@ -15,6 +15,7 @@ public class Profesor extends Usuario{
         super("Default","AdminEntry1","AdminPass");
         
     }
+    
 
     
 }

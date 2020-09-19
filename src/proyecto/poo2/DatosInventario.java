@@ -35,8 +35,8 @@ public class DatosInventario extends javax.swing.JFrame {
     public void cargarDatos() {
         Equipos u;
         
-        for(int i = 0; i < EncargadoF.contenedor.size(); i++) {
-            u = (Equipos)EncargadoF.contenedor.get(i);
+        for(int i = 0; i < EncargadoF.contenedorEquipos.size(); i++) {
+            u = (Equipos)EncargadoF.contenedorEquipos.get(i);
             modelo.insertRow(contador, new Object[]{});
             modelo.setValueAt(u.getN_serie(), contador, 0);
             modelo.setValueAt(u.getNombre(), contador, 1);

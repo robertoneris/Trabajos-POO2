@@ -33,8 +33,15 @@ public class Datos extends javax.swing.JFrame {
     public void cargarDatos() {
         Usuario u;
         
-        for(int i = 0; i < AdminF.contenedor.size(); i++) {
-            u = (Usuario)AdminF.contenedor.get(i);
+        for(int i = 0; i < AdminF.contenedorProf.size(); i++) {
+            u = (Usuario)AdminF.contenedorProf.get(i);
+            modelo.insertRow(contador, new Object[]{});
+            modelo.setValueAt(u.getRut(), contador, 0);
+            modelo.setValueAt(u.getNombre(), contador, 1);
+            modelo.setValueAt(u.getClave(), contador, 2);
+        }
+         for(int i = 0; i < AdminF.contenedorEnca.size(); i++) {
+            u = (Usuario)AdminF.contenedorEnca.get(i);
             modelo.insertRow(contador, new Object[]{});
             modelo.setValueAt(u.getRut(), contador, 0);
             modelo.setValueAt(u.getNombre(), contador, 1);

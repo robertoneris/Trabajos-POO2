@@ -12,8 +12,7 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class ingresoUsuario extends javax.swing.JFrame {
-   Profesor profe = new Profesor();
-   Encargado encar = new Encargado();
+
    String auser;
    String apass;
    boolean TipoUsuario;
@@ -187,8 +186,20 @@ public class ingresoUsuario extends javax.swing.JFrame {
         String User = AUser.getText();
         String Pass = APass.getText();
         if(TipoUsuario == true){
-            apass = profe.getClave();
-            auser = profe.getNombre();
+            for(int i = 0; i < AdminF.contenedorProf.size(); i++){
+              Usuario u;
+              u = (Usuario)AdminF.contenedorProf.get(i);
+             String Buscador = u.getNombre();
+             if(Buscador == User){
+             apass = u.getClave();
+             auser = u.getNombre();
+             break;
+             }
+             else{
+                 continue;
+             }        
+            }
+        }
             if(auser.equals(User) && apass.equals(Pass) ){
               dispose();
               new ProfesorF().setVisible(true);
@@ -197,20 +208,29 @@ public class ingresoUsuario extends javax.swing.JFrame {
             else{
                 revisarContador();
         }
-        }
+        
         if(TipoUsuario == false){
-            apass = encar.getClave();
-            auser = encar.getNombre();
+              for(int i = 0; i < AdminF.contenedorEnca.size(); i++){
+              Usuario u;
+              u = (Usuario)AdminF.contenedorEnca.get(i);
+             String Buscador = u.getNombre();
+             if(Buscador == User){
+             apass = u.getClave();
+             auser = u.getNombre();
+             break;
+             }
+             else{
+                 continue;
+             }
+              }
             if(auser.equals(User) && apass.equals(Pass) ){
                dispose();
                new EncargadoF().setVisible(true);
            }
+              }
             else{
             revisarContador();
-        }
-        }
-       
-        
+        }  
     }//GEN-LAST:event_IniciarSesionActionPerformed
 
     private void AUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AUserKeyTyped

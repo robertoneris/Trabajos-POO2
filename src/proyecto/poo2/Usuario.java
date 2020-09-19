@@ -7,7 +7,9 @@ public class Usuario {
     
     private String rut;
     private String nombre;
-
+    private String clave;
+    
+    
     public String getRut() {
         return rut;
     }
@@ -19,7 +21,7 @@ public class Usuario {
     public String getClave() {
         return clave;
     }
-    private String clave;
+
 
     public void setRut(String rut) {
         this.rut = rut;

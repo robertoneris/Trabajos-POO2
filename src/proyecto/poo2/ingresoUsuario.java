@@ -214,10 +214,18 @@ public class ingresoUsuario extends javax.swing.JFrame {
              apass = u.getClave();
              break;
              }
+             else{
+                 
+                 apass = "Null";
+             }
            }
+             
             if(Pass.equals(apass)){
                 this.dispose();
                 new ProfesorF().setVisible(true);
+            }
+            else{
+                revisarContador();
             }
         }
         if(TipoUsuario == false){
@@ -229,11 +237,17 @@ public class ingresoUsuario extends javax.swing.JFrame {
              apass = u.getClave();
              break;
              }
+             else{
+                 apass = "null";
+             }
            }
             if(Pass.equals(apass)){
                 this.dispose();
                 new EncargadoF().setVisible(true);
-            } 
+            }
+            else{
+                revisarContador();
+            }
         }
     }//GEN-LAST:event_IniciarSesionActionPerformed
 

@@ -5,6 +5,8 @@
  */
 package proyecto.poo2;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,7 @@ public class SolicitarRegistro extends javax.swing.JFrame {
      */
     public SolicitarRegistro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -132,7 +135,8 @@ public class SolicitarRegistro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese los datos");
             
         } else {
-            guardar();
+            Enviar(usuario,rut,cargo);
+            Guardar();
             JOptionPane.showMessageDialog(null, "Sus datos han sido enviados");
             nombreUsuario.setText(null);
             rutUsuario.setText(null);
@@ -196,7 +200,27 @@ public class SolicitarRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField rutUsuario;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
-public void guardar(){
+public void Enviar(String user, String rut, String cargo){
+       
+       
+        //guardaod de datos
+        FileWriter fichero;
+        PrintWriter pw; 
+        try{
+            fichero = new FileWriter("C:/Users/Public/Prob.txt",true);
+            pw = new PrintWriter(fichero);
+            pw.println(user+","+rut+","+cargo);
+            pw.close();
+            fichero.close();
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+    
+}
+public void Guardar(){
     
 }
 }

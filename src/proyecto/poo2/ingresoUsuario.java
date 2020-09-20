@@ -5,7 +5,13 @@
  */
 package proyecto.poo2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import static proyecto.poo2.AdminF.contenedorEnca;
+import static proyecto.poo2.AdminF.contenedorProf;
 
 /**
  *
@@ -22,9 +28,25 @@ public class ingresoUsuario extends javax.swing.JFrame {
      */
     public ingresoUsuario() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
         HabilitarIngreso();
-        
+        File archivo = new File("C:/Users/Public/UserProf.txt");
+        if(archivo.exists()){
+        try{
+        ObjectInputStream abrirProf = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        contenedorProf = (LinkedList) abrirProf.readObject();
+        abrirProf.close();
+        ObjectInputStream abrirEnca = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserEnca.txt"));
+        contenedorEnca = (LinkedList) abrirEnca.readObject();
+        abrirEnca.close();
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+    }
     }
 
     /**
@@ -94,7 +116,6 @@ public class ingresoUsuario extends javax.swing.JFrame {
         jLabel3.setText("constraseña");
 
         buttonGroup1.add(Encargado);
-        Encargado.setSelected(true);
         Encargado.setText("Encargado");
         Encargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,55 +203,38 @@ public class ingresoUsuario extends javax.swing.JFrame {
 
     private void IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarSesionActionPerformed
         // TODO add your handling code here:
-        
-        String User = AUser.getText();
-        String Pass = APass.getText();
+        String User = String.valueOf(AUser.getText());
+        String Pass = String.valueOf(APass.getText());
         if(TipoUsuario == true){
-            for(int i = 0; i < AdminF.contenedorProf.size(); i++){
-              Usuario u;
-              u = (Usuario)AdminF.contenedorProf.get(i);
-             String Buscador = u.getNombre();
-             if(Buscador == User){
+            Usuario u;
+             for(int i = 0; i < AdminF.contenedorProf.size(); i++) {
+             u = (Usuario)AdminF.contenedorProf.get(i);
+             auser = String.valueOf(u.getNombre());
+             if(User.equals(auser)){
              apass = u.getClave();
-             auser = u.getNombre();
              break;
              }
-             else{
-                 continue;
-             }        
+           }
+            if(Pass.equals(apass)){
+                this.dispose();
+                new ProfesorF().setVisible(true);
             }
         }
-            if(auser.equals(User) && apass.equals(Pass) ){
-              dispose();
-              new ProfesorF().setVisible(true);
-          
-          }
-            else{
-                revisarContador();
-        }
-        
         if(TipoUsuario == false){
-              for(int i = 0; i < AdminF.contenedorEnca.size(); i++){
-              Usuario u;
-              u = (Usuario)AdminF.contenedorEnca.get(i);
-             String Buscador = u.getNombre();
-             if(Buscador == User){
+             Usuario u;
+             for(int i = 0; i < AdminF.contenedorEnca.size(); i++) {
+             u = (Usuario)AdminF.contenedorEnca.get(i);
+             auser = String.valueOf(u.getNombre());
+             if(User.equals(auser)){
              apass = u.getClave();
-             auser = u.getNombre();
              break;
              }
-             else{
-                 continue;
-             }
-              }
-            if(auser.equals(User) && apass.equals(Pass) ){
-               dispose();
-               new EncargadoF().setVisible(true);
            }
-              }
-            else{
-            revisarContador();
-        }  
+            if(Pass.equals(apass)){
+                this.dispose();
+                new EncargadoF().setVisible(true);
+            } 
+        }
     }//GEN-LAST:event_IniciarSesionActionPerformed
 
     private void AUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AUserKeyTyped

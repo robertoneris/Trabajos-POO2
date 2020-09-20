@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
-
+import java.io.*;
 /**
  *
  * @author rober
@@ -25,8 +25,23 @@ public class AdminF extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         int contador = 0;
- 
-        cargar();
+        File archivo = new File("C:/Users/Public/UserProf.txt");
+        if(archivo.exists()){
+        try{
+        ObjectInputStream abrirProf = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        contenedorProf = (LinkedList) abrirProf.readObject();
+        abrirProf.close();
+        ObjectInputStream abrirEnca = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserEnca.txt"));
+        contenedorEnca = (LinkedList) abrirEnca.readObject();
+        abrirEnca.close();
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+        }
+        
     }
 
     /**
@@ -96,7 +111,6 @@ public class AdminF extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(esprofesor);
-        esprofesor.setSelected(true);
         esprofesor.setText("Profesor");
         esprofesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,8 +219,8 @@ public class AdminF extends javax.swing.JFrame {
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
         //Submit los datos
-        String nombre = rutUsuario.getText();
-        String rut = nombreUsuario.getText();
+        String rut = rutUsuario.getText();
+        String nombre = nombreUsuario.getText();
         String clave = claveUsuario.getText();
         
        
@@ -215,8 +229,14 @@ public class AdminF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos");
             
         } else {
-            CrearUsuario(rut,nombre,clave);
-            guardar();
+            if(esprofe == true){
+                CrearProf(rut,nombre,clave);
+            }
+            else{
+                crearEnca(rut,nombre,clave);
+            }
+            guardarProf();
+            guardarEnca();
             JOptionPane.showMessageDialog(null, "Se han enviado todos los datos");
             rutUsuario.setText(null);
             nombreUsuario.setText(null);
@@ -296,50 +316,44 @@ public class AdminF extends javax.swing.JFrame {
     private javax.swing.JTextField nombreUsuario;
     private javax.swing.JTextField rutUsuario;
     // End of variables declaration//GEN-END:variables
-public void CrearUsuario(String Rut,String Usuario, String Clave){
-    if(esprofe = true){
+public void CrearProf(String Rut,String Usuario, String Clave){
       Profesor NuevoProf = new Profesor();
       NuevoProf.setRut(Rut);
       NuevoProf.setNombre(Usuario);
       NuevoProf.setClave(Clave);
       contenedorProf.add(NuevoProf);
-    }
-    if(esprofe = false){
+    
+}
+public void crearEnca(String Rut,String Usuario,String Clave){
       Encargado NuevoEnca = new Encargado();
       NuevoEnca.setRut(Rut);
       NuevoEnca.setNombre(Usuario);
       NuevoEnca.setClave(Clave);
-      contenedorEnca.add(NuevoEnca);    
-    }
+      contenedorEnca.add(NuevoEnca);
 }
-public void guardar(){
-      Usuario u;
-        
-        for(int i = 0; i < AdminF.contenedorProf.size(); i++) {
-        u = (Usuario)AdminF.contenedorProf.get(i);
-        String c1 = u.getRut();
-        String c2 = u.getNombre();
-        String c3 = u.getClave();
-        String CadenaDatos = "";
-        CadenaDatos = c1+","+c2 +","+c3;
-        //guardaod de datos
-        FileWriter fichero;
-        PrintWriter pw; 
+public void guardarProf(){
         try{
-            fichero = new FileWriter("UserProf.txt",false);
-            pw = new PrintWriter(fichero);
-            pw.print(CadenaDatos);
-
-
+        ObjectOutputStream GuardarProf = new ObjectOutputStream(new FileOutputStream("C:/Users/Public/UserProf.txt"));
+        GuardarProf.writeObject(contenedorProf);
+        GuardarProf.close();
+       
         }
         catch(Exception e){
              JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
             "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
         }
-        }
 
 }
-public void cargar(){
-    
+public void guardarEnca(){
+      try{
+        ObjectOutputStream GuardarEnca = new ObjectOutputStream(new FileOutputStream("C:/Users/Public/UserEnca.txt"));
+        GuardarEnca.writeObject(contenedorEnca);
+        GuardarEnca.close();
+    }
+      catch(Exception e){
+         JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
+          "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+      }
 }
-}
+

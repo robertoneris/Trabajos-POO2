@@ -1,9 +1,10 @@
 
 package proyecto.poo2;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Usuario {
+public class Usuario implements Serializable{
     
     private String rut;
     private String nombre;
@@ -40,11 +41,6 @@ public class Usuario {
         this.nombre = nombre;
         this.clave = clave;
     }
-
-   
-
-   
-    
 }
 
 

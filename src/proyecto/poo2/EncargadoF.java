@@ -5,8 +5,14 @@
  */
 package proyecto.poo2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import static proyecto.poo2.AdminF.contenedorEnca;
 import static proyecto.poo2.AdminF.contenedorProf;
 
 /**
@@ -23,6 +29,20 @@ public class EncargadoF extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         int contador = 0;
+          File archivo = new File("C:/Users/Public/hardware.txt");
+        if(archivo.exists()){
+        try{
+        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        contenedorEquipos = (LinkedList) abrirEquipo.readObject();
+        abrirEquipo.close();
+
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+        }
     }
 
     /**
@@ -318,6 +338,7 @@ public class EncargadoF extends javax.swing.JFrame {
         
         Equipos claseequipos = new Equipos(numS,nomE,marE,af,numL,Sede,operatividad);
         contenedorEquipos.add(claseequipos);
+        guardarEquipos();
         
         
         if(numS.isEmpty() || nomE.isEmpty() || marE.isEmpty() || af.isEmpty() || numL.isEmpty() || Sede.isEmpty() || operatividad.isEmpty()) {
@@ -351,7 +372,7 @@ public class EncargadoF extends javax.swing.JFrame {
         } else {
             Equipos a = new Equipos(numS,nomE,marE,af,numL,Sede,opE);
             contenedorEquipos.set(buscar,a);
-            
+            guardarEquipos();
             numSerie1.setText(null);
             nombre.setText(null);
             marca.setText(null);
@@ -479,7 +500,16 @@ public class EncargadoF extends javax.swing.JFrame {
     private javax.swing.JTextField sede;
     // End of variables declaration//GEN-END:variables
 
-public void cargar(){
-    
+public void guardarEquipos(){
+    try{
+        ObjectOutputStream GuardarEquipo = new ObjectOutputStream(new FileOutputStream("C:/Users/Public/hardware.txt"));
+        GuardarEquipo.writeObject(contenedorEquipos);
+        GuardarEquipo.close();
+       
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
 }
 }

@@ -5,11 +5,13 @@
  */
 package proyecto.poo2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author x_jor
  */
-public class Equipos extends Sede {
+public class Equipos extends Sede implements Serializable {
     
     private String N_serie;
     private String Nombre;
@@ -17,7 +19,7 @@ public class Equipos extends Sede {
     private String AñoFabricacion;
     private String Laboratorio;
     private String Sede;
-    private String EstadoOperatividad; 
+    private boolean EstadoOperatividad; 
     
     //contructor de la clase
 
@@ -28,7 +30,7 @@ public class Equipos extends Sede {
         this.AñoFabricacion = AñoFabricacion;
         this.Laboratorio = Laboratorio;
         this.Sede = Sede;
-        this.EstadoOperatividad = EstadoOperatividad;
+        this.EstadoOperatividad = false;
     }
 
     public String getN_serie() {
@@ -79,13 +81,15 @@ public class Equipos extends Sede {
         this.Sede = Sede;
     }
 
-    public String getEstadoOperatividad() {
+    public boolean getEstadoOperatividad() {
         return EstadoOperatividad;
     }
 
-    public void setEstadoOperatividad(String EstadoOperatividad) {
+    public void setEstadoOperatividad(boolean EstadoOperatividad) {
         this.EstadoOperatividad = EstadoOperatividad;
     }
+
+  
 
     
     

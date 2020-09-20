@@ -14,13 +14,14 @@ import static proyecto.poo2.EncargadoF.contenedorEquipos;
  * @author rober
  */
 public class ProfesorF extends javax.swing.JFrame {
-    
+    boolean operativos;
     /**
      * Creates new form ProfesorF
      */
     public ProfesorF() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -33,9 +34,7 @@ public class ProfesorF extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         numSerie = new javax.swing.JTextField();
@@ -52,11 +51,12 @@ public class ProfesorF extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         laboratorio = new javax.swing.JTextField();
         sede = new javax.swing.JTextField();
-        operatividad = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +65,6 @@ public class ProfesorF extends javax.swing.JFrame {
         jLabel4.setText("N° de Serie del equipo");
 
         buttonGroup1.add(Operativo);
-        Operativo.setSelected(true);
         Operativo.setText("Operativo");
         Operativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,12 +115,6 @@ public class ProfesorF extends javax.swing.JFrame {
 
         sede.setEditable(false);
 
-        operatividad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                operatividadActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Laboratorio");
 
         jLabel8.setText("Sede");
@@ -135,6 +128,14 @@ public class ProfesorF extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup6.add(jRadioButton1);
+        jRadioButton1.setText("jRadioButton1");
+        jRadioButton1.setEnabled(false);
+
+        buttonGroup6.add(jRadioButton2);
+        jRadioButton2.setText("jRadioButton2");
+        jRadioButton2.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,56 +143,60 @@ public class ProfesorF extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(197, 197, 197)
-                                        .addComponent(jLabel1)
-                                        .addGap(74, 74, 74)
-                                        .addComponent(jLabel5)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jLabel6)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jLabel8)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jLabel9))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(24, 24, 24)
-                                        .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(operatividad, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(71, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Operativo)
+                                    .addComponent(noOperativo)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Operativo)
-                                .addComponent(noOperativo)))
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(92, 92, 92)
+                                    .addComponent(jButton2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(20, 20, 20))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jRadioButton2))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(197, 197, 197)
+                                    .addComponent(jLabel1)
+                                    .addGap(74, 74, 74)
+                                    .addComponent(jLabel5)
+                                    .addGap(64, 64, 64)
+                                    .addComponent(jLabel6)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jLabel8)
+                                    .addGap(36, 36, 36)
+                                    .addComponent(jLabel9))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jRadioButton1))))))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +222,11 @@ public class ProfesorF extends javax.swing.JFrame {
                     .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(operatividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Operativo)
+                    .addComponent(jRadioButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Operativo)
+                    .addComponent(jRadioButton2))
                 .addGap(5, 5, 5)
                 .addComponent(noOperativo)
                 .addGap(18, 18, 18)
@@ -240,16 +247,16 @@ public class ProfesorF extends javax.swing.JFrame {
         String añoE = año.getText();
         String labE = laboratorio.getText();
         String sedeE = sede.getText();
-        String OpE =operatividad.getText();
+        boolean OpE =operativos;
         
-        Equipos claseequipos = new Equipos(numS,nomE,marE,añoE,labE,sedeE,OpE);
-        contenedorEquipos.add(claseequipos);
+
         
         if(numS.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese numero de serie del equipo a modificar");
             
         } else {
-            
+            Equipos claseequipos = new Equipos(numS,nomE,marE,añoE,labE,sedeE,String.valueOf(OpE));
+            contenedorEquipos.add(claseequipos);
              JOptionPane.showMessageDialog(null, "Operatividad modificada");
              numSerie.setText(null);
              nombre.setText(null);
@@ -257,7 +264,8 @@ public class ProfesorF extends javax.swing.JFrame {
              año.setText(null);
              laboratorio.setText(null);
              sede.setText(null);
-             operatividad.setText(null);
+             Operativo.setSelected(false);
+             noOperativo.setSelected(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -269,19 +277,17 @@ public class ProfesorF extends javax.swing.JFrame {
 
     private void noOperativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOperativoActionPerformed
         // TODO add your handling code here:
+        operativos =false;
     }//GEN-LAST:event_noOperativoActionPerformed
 
     private void OperativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OperativoActionPerformed
         // TODO add your handling code here:
+        operativos = true;
     }//GEN-LAST:event_OperativoActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
-
-    private void operatividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operatividadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_operatividadActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -327,9 +333,7 @@ public class ProfesorF extends javax.swing.JFrame {
     private javax.swing.JRadioButton Operativo;
     private javax.swing.JTextField año;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
@@ -342,12 +346,13 @@ public class ProfesorF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField laboratorio;
     private javax.swing.JTextField marca;
     private javax.swing.JRadioButton noOperativo;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField numSerie;
-    private javax.swing.JTextField operatividad;
     private javax.swing.JTextField sede;
     // End of variables declaration//GEN-END:variables
 }

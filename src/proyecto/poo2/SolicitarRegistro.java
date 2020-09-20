@@ -35,7 +35,7 @@ public class SolicitarRegistro extends javax.swing.JFrame {
         nombreUsuario = new javax.swing.JTextField();
         rutUsuario = new javax.swing.JTextField();
         envio = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         tipo = new javax.swing.JTextField();
 
@@ -54,10 +54,10 @@ public class SolicitarRegistro extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setText("cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
@@ -93,7 +93,7 @@ public class SolicitarRegistro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(envio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
@@ -116,7 +116,7 @@ public class SolicitarRegistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(envio)
-                    .addComponent(jButton1))
+                    .addComponent(cancelar))
                 .addGap(46, 46, 46))
         );
 
@@ -140,11 +140,11 @@ public class SolicitarRegistro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_envioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
         dispose();
         new Sistema().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cancelarActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         // TODO add your handling code here:
@@ -186,8 +186,8 @@ public class SolicitarRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelar;
     private javax.swing.JButton envio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

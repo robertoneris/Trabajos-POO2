@@ -5,7 +5,13 @@
  */
 package proyecto.poo2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static proyecto.poo2.EncargadoF.contenedorEquipos;
 
 /**
  *
@@ -14,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class DatosInventario extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     int contador = 0;
+      
 
     /**
      * Creates new form DatosInventario
@@ -22,7 +29,20 @@ public class DatosInventario extends javax.swing.JFrame {
         initComponents();
         cargarInterfaz();
         cargarDatos();
-        
+        File archivo = new File("C:/Users/Public/hardware.txt");
+        if(archivo.exists()){
+        try{
+        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        contenedorEquipos = (LinkedList) abrirEquipo.readObject();
+        abrirEquipo.close();
+
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+        }
     }
     
     public void cargarInterfaz() {
@@ -36,7 +56,7 @@ public class DatosInventario extends javax.swing.JFrame {
         Equipos u;
         
         for(int i = 0; i < EncargadoF.contenedorEquipos.size(); i++) {
-            u = (Equipos)EncargadoF.contenedorEquipos.get(i);
+            u = (Equipos)contenedorEquipos.get(i);
             modelo.insertRow(contador, new Object[]{});
             modelo.setValueAt(u.getN_serie(), contador, 0);
             modelo.setValueAt(u.getNombre(), contador, 1);
@@ -44,7 +64,7 @@ public class DatosInventario extends javax.swing.JFrame {
             modelo.setValueAt(u.getAñoFabricacion(), contador, 3);
             modelo.setValueAt(u.getLaboratorio(), contador, 4);
             modelo.setValueAt(u.getSede(), contador, 5);
-            modelo.setValueAt(u.getEstadoOperatividad(), contador, 6);
+            modelo.setValueAt(String.valueOf(u.getEstadoOperatividad()), contador, 6);
         }
     }
 
@@ -62,7 +82,7 @@ public class DatosInventario extends javax.swing.JFrame {
         TablaInventario = new javax.swing.JTable();
         BotonCerrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("DATOS INVENTARIO");
 

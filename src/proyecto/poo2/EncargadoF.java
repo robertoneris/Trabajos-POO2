@@ -34,7 +34,7 @@ public class EncargadoF extends javax.swing.JFrame {
         File archivo = new File("C:/Users/Public/hardware.txt");
         if(archivo.exists()){
         try{
-        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/hardware.txt"));
         contenedorEquipos = (LinkedList) abrirEquipo.readObject();
         abrirEquipo.close();
 
@@ -193,6 +193,11 @@ public class EncargadoF extends javax.swing.JFrame {
 
         operartividadCr.add(RBOperativo);
         RBOperativo.setText("si");
+        RBOperativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBOperativoActionPerformed(evt);
+            }
+        });
 
         operartividadCr.add(noOperativo);
         noOperativo.setText("no");
@@ -377,7 +382,7 @@ public class EncargadoF extends javax.swing.JFrame {
             
         } else {
             JOptionPane.showMessageDialog(null, "Nuevo equipo agregado");
-            Equipos claseequipos = new Equipos(numS,nomE,marE,af,numL,Sede,String.valueOf(operatividad));
+            Equipos claseequipos = new Equipos(numS,nomE,marE,af,numL,Sede,operatividad);
             contenedorEquipos.add(claseequipos);
             guardarEquipos();
             numSerieEquipo.setText(null);
@@ -386,7 +391,8 @@ public class EncargadoF extends javax.swing.JFrame {
             Fabricacion.setText(null);
             numLab.setText(null);
             numeroSede.setText(null);
-            
+            estaOperativo.setSelected(false);
+            noEstaOperativo.setSelected(false);
         }
         
     }//GEN-LAST:event_AgregarActionPerformed
@@ -404,8 +410,29 @@ public class EncargadoF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingreso el numero de serie del equipo");
             
         } else {
-            Equipos a = new Equipos(numS,nomE,marE,af,numL,Sede,String.valueOf(opE));
-            contenedorEquipos.set(buscar,a);
+            Equipos u;
+            String SeriePrueba = String.valueOf(numSerie1.getText());
+            for(int i = 0; i < EncargadoF.contenedorEquipos.size(); i++){
+                u = (Equipos)contenedorEquipos.get(i);
+                String igualador = String.valueOf(u.getN_serie());
+                if(igualador.equals(SeriePrueba)){
+                    System.out.println("modificando");
+                    u.setEstadoOperatividad(opE);
+                    u.setN_serie(numS);
+                    u.setSede(Sede);
+                    u.setMarca(marE);
+                    u.setLaboratorio(numL);
+                    u.setAñoFabricacion(af);
+                    u.setNombre(nomE);
+                    
+                    contenedorEquipos.set(i, u);
+                    break;
+                }
+                else{
+                    continue;
+                     
+                }
+            }
             guardarEquipos();
             numSerie1.setText(null);
             nombre.setText(null);
@@ -413,6 +440,8 @@ public class EncargadoF extends javax.swing.JFrame {
             año.setText(null);
             laboratorio.setText(null);
             sede.setText(null);
+            RBOperativo.setSelected(false);
+            noOperativo.setSelected(false);
            
         }
     }//GEN-LAST:event_ModificarActionPerformed
@@ -461,7 +490,8 @@ public class EncargadoF extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
+        new Sistema().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void estaOperativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estaOperativoActionPerformed
@@ -473,6 +503,11 @@ public class EncargadoF extends javax.swing.JFrame {
         // TODO add your handling code here:
         Operativo = false;
     }//GEN-LAST:event_noEstaOperativoActionPerformed
+
+    private void RBOperativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBOperativoActionPerformed
+        // TODO add your handling code here:
+        Operativo = true;
+    }//GEN-LAST:event_RBOperativoActionPerformed
 
     /**
      * @param args the command line arguments

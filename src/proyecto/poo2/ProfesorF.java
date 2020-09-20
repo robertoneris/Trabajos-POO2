@@ -5,6 +5,12 @@
  */
 package proyecto.poo2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import static proyecto.poo2.EncargadoF.contenedorEquipos;
@@ -21,7 +27,20 @@ public class ProfesorF extends javax.swing.JFrame {
     public ProfesorF() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+         File archivo = new File("C:/Users/Public/hardware.txt");
+        if(archivo.exists()){
+        try{
+        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/hardware.txt"));
+        contenedorEquipos = (LinkedList) abrirEquipo.readObject();
+        abrirEquipo.close();
+
+
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+    }
     }
 
     /**
@@ -37,7 +56,7 @@ public class ProfesorF extends javax.swing.JFrame {
         buttonGroup6 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        numSerie = new javax.swing.JTextField();
+        serial = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Operativo = new javax.swing.JRadioButton();
         noOperativo = new javax.swing.JRadioButton();
@@ -55,12 +74,29 @@ public class ProfesorF extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        op = new javax.swing.JRadioButton();
+        nop = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Modificar Operatividad");
+
+        serial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serialActionPerformed(evt);
+            }
+        });
+        serial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                serialKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serialKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                serialKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("N° de Serie del equipo");
 
@@ -81,6 +117,15 @@ public class ProfesorF extends javax.swing.JFrame {
         });
 
         jButton1.setText("Modificar");
+        jButton1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jButton1AncestorMoved(evt);
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -128,13 +173,13 @@ public class ProfesorF extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup6.add(jRadioButton1);
-        jRadioButton1.setText("jRadioButton1");
-        jRadioButton1.setEnabled(false);
+        buttonGroup6.add(op);
+        op.setText("Operativo");
+        op.setEnabled(false);
 
-        buttonGroup6.add(jRadioButton2);
-        jRadioButton2.setText("jRadioButton2");
-        jRadioButton2.setEnabled(false);
+        buttonGroup6.add(nop);
+        nop.setText("No Operativo");
+        nop.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,22 +197,17 @@ public class ProfesorF extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Operativo)
                                     .addComponent(noOperativo)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(92, 92, 92)
-                                    .addComponent(jButton2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(20, 20, 20))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton2))))
+                            .addGap(92, 92, 92)
+                            .addComponent(jButton2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addGap(18, 18, 18)
-                                    .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,8 +235,10 @@ public class ProfesorF extends javax.swing.JFrame {
                                     .addGap(24, 24, 24)
                                     .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jRadioButton1))))))
-                .addContainerGap(75, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nop)
+                                        .addComponent(op)))))))
+                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,18 +257,18 @@ public class ProfesorF extends javax.swing.JFrame {
                         .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
+                    .addComponent(op))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Operativo)
-                    .addComponent(jRadioButton2))
+                    .addComponent(nop))
                 .addGap(5, 5, 5)
                 .addComponent(noOperativo)
                 .addGap(18, 18, 18)
@@ -241,7 +283,7 @@ public class ProfesorF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String numS = numSerie.getText();
+        String numS = serial.getText();
         String nomE = nombre.getText();
         String marE = marca.getText();
         String añoE = año.getText();
@@ -255,10 +297,22 @@ public class ProfesorF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese numero de serie del equipo a modificar");
             
         } else {
-            Equipos claseequipos = new Equipos(numS,nomE,marE,añoE,labE,sedeE,String.valueOf(OpE));
-            contenedorEquipos.add(claseequipos);
+            Equipos u;
+            String SeriePrueba = String.valueOf(serial.getText());
+            for(int i = 0; i < EncargadoF.contenedorEquipos.size(); i++){
+                u = (Equipos)contenedorEquipos.get(i);
+                String igualador = u.getN_serie();
+                if(igualador.equals(SeriePrueba) ){
+                    u.setEstadoOperatividad(operativos);
+                    break;
+                }
+                else{
+                    continue;
+                }
+            }
+             guardarEquipos();
              JOptionPane.showMessageDialog(null, "Operatividad modificada");
-             numSerie.setText(null);
+             serial.setText(null);
              nombre.setText(null);
              marca.setText(null);
              año.setText(null);
@@ -266,6 +320,8 @@ public class ProfesorF extends javax.swing.JFrame {
              sede.setText(null);
              Operativo.setSelected(false);
              noOperativo.setSelected(false);
+             op.setSelected(false);
+             nop.setSelected(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -291,8 +347,59 @@ public class ProfesorF extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
+        new Sistema().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButton1AncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1AncestorMoved
+
+    private void serialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serialKeyTyped
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_serialKeyTyped
+
+    private void serialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serialKeyReleased
+        // TODO add your handling code here:
+Equipos u;
+        String buscador = String.valueOf(serial.getText());
+            for(int i = 0; i < EncargadoF.contenedorEquipos.size(); i++) {
+                
+                u = (Equipos)contenedorEquipos.get(i);
+                String Comparador = String.valueOf(u.getN_serie());
+                if(buscador.equals(Comparador)){
+                    nombre.setText(u.getNombre());
+                    marca.setText(u.getMarca());
+                    año.setText(u.getN_serie());
+                    laboratorio.setText(u.getLaboratorio());
+                    sede.setText(u.getSede());
+                    if(u.getEstadoOperatividad() == true){
+                        op.setSelected(true);
+                        nop.setSelected(false);
+                    }
+                    else{
+                        op.setSelected(false);
+                        nop.setSelected(true);
+                    }
+                    break;
+                }
+                else{
+                    System.out.println(buscador + " no es igual a " + Comparador);
+                    continue;
+                }
+            }
+    }//GEN-LAST:event_serialKeyReleased
+
+    private void serialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serialKeyPressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_serialKeyPressed
+
+    private void serialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serialActionPerformed
+        // TODO add your handling code here:
+          
+    }//GEN-LAST:event_serialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,13 +453,25 @@ public class ProfesorF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField laboratorio;
     private javax.swing.JTextField marca;
     private javax.swing.JRadioButton noOperativo;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField numSerie;
+    private javax.swing.JRadioButton nop;
+    private javax.swing.JRadioButton op;
     private javax.swing.JTextField sede;
+    private javax.swing.JTextField serial;
     // End of variables declaration//GEN-END:variables
+public void guardarEquipos(){
+    try{
+        ObjectOutputStream GuardarEquipo = new ObjectOutputStream(new FileOutputStream("C:/Users/Public/hardware.txt"));
+        GuardarEquipo.writeObject(contenedorEquipos);
+        GuardarEquipo.close();
+       
+        }
+        catch(Exception e){
+             JOptionPane.showConfirmDialog(null, "Error al Guardar Archivos", 
+            "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+}
 }

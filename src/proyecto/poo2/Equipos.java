@@ -23,14 +23,14 @@ public class Equipos extends Sede implements Serializable {
     
     //contructor de la clase
 
-    public Equipos(String N_serie, String Nombre, String Marca, String AñoFabricacion, String Laboratorio, String Sede, String EstadoOperatividad) {
+    public Equipos(String N_serie, String Nombre, String Marca, String AñoFabricacion, String Laboratorio, String Sede, boolean EstadoOperatividad) {
         this.N_serie = N_serie;
         this.Nombre = Nombre;
         this.Marca = Marca;
         this.AñoFabricacion = AñoFabricacion;
         this.Laboratorio = Laboratorio;
         this.Sede = Sede;
-        this.EstadoOperatividad = false;
+        this.EstadoOperatividad = EstadoOperatividad;
     }
 
     public String getN_serie() {

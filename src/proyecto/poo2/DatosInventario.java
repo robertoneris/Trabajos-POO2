@@ -32,7 +32,7 @@ public class DatosInventario extends javax.swing.JFrame {
         File archivo = new File("C:/Users/Public/hardware.txt");
         if(archivo.exists()){
         try{
-        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/UserProf.txt"));
+        ObjectInputStream abrirEquipo = new ObjectInputStream(new FileInputStream("C:/Users/Public/hardware.txt"));
         contenedorEquipos = (LinkedList) abrirEquipo.readObject();
         abrirEquipo.close();
 
@@ -140,7 +140,8 @@ public class DatosInventario extends javax.swing.JFrame {
 
     private void BotonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
+     
     }//GEN-LAST:event_BotonCerrarActionPerformed
 
     /**

@@ -1,2 +1,0 @@
-bob3,14,encargado
-bobmaster,15,profe

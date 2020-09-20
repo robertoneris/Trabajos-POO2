@@ -16,6 +16,8 @@ import java.io.*;
  */
 public class AdminF extends javax.swing.JFrame {
     boolean esprofe;
+    boolean ProfeDis;
+    boolean EncaDis;
     public static LinkedList contenedorProf = new LinkedList();
     public static LinkedList contenedorEnca = new LinkedList();
     /**
@@ -23,6 +25,7 @@ public class AdminF extends javax.swing.JFrame {
      */
     public AdminF() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
         int contador = 0;
         File archivo = new File("C:/Users/Public/UserProf.txt");
@@ -225,15 +228,27 @@ public class AdminF extends javax.swing.JFrame {
         
        
         
-        if(nombre.isEmpty() || rut.isEmpty() || clave.isEmpty()) {
+                if(nombre.isEmpty() || rut.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos");
             
         } else {
             if(esprofe == true){
+                ProfeDis = Disponibilidadprof(nombre);
+                if(ProfeDis == true){
                 CrearProf(rut,nombre,clave);
+                }
+                else{
+                   JOptionPane.showMessageDialog(null, "Nombre No Disponible"); 
+                }
             }
             else{
+                EncaDis = Disponibilidaenca(nombre);
+                if(EncaDis == true){
                 crearEnca(rut,nombre,clave);
+                }
+                else{
+                   JOptionPane.showMessageDialog(null, "Nombre No Disponible"); 
+                }
             }
             guardarProf();
             guardarEnca();
@@ -242,8 +257,9 @@ public class AdminF extends javax.swing.JFrame {
             nombreUsuario.setText(null);
             claveUsuario.setText(null);
         }
+    
     }//GEN-LAST:event_CrearActionPerformed
-
+        
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -355,5 +371,41 @@ public void guardarEnca(){
           "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
         }
       }
+public boolean Disponibilidadprof(String nombre){
+    boolean disponibilidadprof = true ;
+      Usuario u;
+        
+        for(int i = 0; i < AdminF.contenedorProf.size(); i++) {
+            u = (Usuario)AdminF.contenedorProf.get(i);
+            String comparar = String.valueOf(u.getNombre());
+            if(comparar.equals(nombre)){
+                disponibilidadprof = false;
+            break;
+            }
+            else{
+                continue;
+            }
+        }
+        
+    return disponibilidadprof;
+}
+public boolean Disponibilidaenca(String nombre){
+    boolean disponibilidadenca = true ;
+      Usuario u;
+        
+        for(int i = 0; i < AdminF.contenedorEnca.size(); i++) {
+            u = (Usuario)AdminF.contenedorEnca.get(i);
+            String comparar = String.valueOf(u.getNombre());
+            if(comparar.equals(nombre)){
+                disponibilidadenca = false;
+            break;
+            }
+            else{
+                continue;
+            }
+        }
+        
+    return disponibilidadenca;
+}
 }
 

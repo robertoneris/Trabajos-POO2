@@ -37,7 +37,7 @@ public class ProfesorF extends javax.swing.JFrame {
 
         }
         catch(Exception e){
-             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+             JOptionPane.showConfirmDialog(null, "Archivo no existe, genere base de datos", 
             "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -371,7 +371,7 @@ Equipos u;
                 if(buscador.equals(Comparador)){
                     nombre.setText(u.getNombre());
                     marca.setText(u.getMarca());
-                    año.setText(u.getN_serie());
+                    año.setText(u.getAñoFabricacion());
                     laboratorio.setText(u.getLaboratorio());
                     sede.setText(u.getSede());
                     if(u.getEstadoOperatividad() == true){
@@ -385,7 +385,7 @@ Equipos u;
                     break;
                 }
                 else{
-                    System.out.println(buscador + " no es igual a " + Comparador);
+                    
                     continue;
                 }
             }

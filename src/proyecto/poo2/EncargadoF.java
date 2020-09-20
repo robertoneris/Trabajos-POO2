@@ -41,7 +41,7 @@ public class EncargadoF extends javax.swing.JFrame {
 
         }
         catch(Exception e){
-             JOptionPane.showConfirmDialog(null, "Error Fatal", 
+             JOptionPane.showConfirmDialog(null, "Archivo no existe, genere base de datos", 
             "Aviso",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE);
         }
         }
